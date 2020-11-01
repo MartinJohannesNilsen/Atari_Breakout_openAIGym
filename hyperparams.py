@@ -1,3 +1,5 @@
+import torch.optim as optim
+
 "List of hyperparams given for the model"
 
 do_boltzman_exploration = True
@@ -12,3 +14,6 @@ discount_factor = 0.99
 env_steps_before_train = 16
 tgt_model_update = 5000
 epochs_before_test = 1000
+
+optimizer_function = optim.Adam
+# optimizer_function = optim.RMSprop

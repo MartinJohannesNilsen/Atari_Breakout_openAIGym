@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from hyperparams import optimizer_function
 
 # Den jeg brukte til Cartpole, kun for referanse
 class Model(nn.Module):
@@ -47,7 +48,7 @@ class ConvModel(nn.Module):
             torch.nn.Linear(256, num_actions),
         )
         # self.opt = optim.Adam(self.parameters(), lr=lr)
-        self.opt = optim.RMSprop(self.parameters(), lr=lr)
+        self.opt = optimizer_function(self.parameters(), lr=lr)
 
     def forward(self, x):
         conv_latent = self.conv_net(x/255.0)  # shape: (N, )
