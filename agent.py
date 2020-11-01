@@ -26,7 +26,7 @@ class Sarsd:
 
 
 class ReplayBuffer:
-    def __init__(self, buffer_size=100000):
+    def __init__(self, buffer_size=1_000_000):
         self.buffer_size = buffer_size
         self.buffer = [None] * buffer_size
         self.idx = 0
@@ -59,7 +59,7 @@ def train_step(model, state_transitions, tgt, num_actions, gamma=discount_factor
                 for s in state_transitions
             ]
         )
-    )
+    )  # The action mask indicates whether an action is valid or invalid for each state
     next_states = torch.stack(
         ([torch.Tensor(s.next_state) for s in state_transitions])
     )
@@ -70,7 +70,7 @@ def train_step(model, state_transitions, tgt, num_actions, gamma=discount_factor
 
     model.opt.zero_grad()
     qvals = model(cur_states)  # (N, num_actions)
-    one_hot_actions = F.one_hot(torch.LongTensor(actions), num_actions)
+    one_hot_actions = F.one_hot(torch.LongTensor(actions), num_actions)  # Multiplies qvals with one_hot_actions for efficiency
 
     loss_fn = nn.SmoothL1Loss()
     loss = loss_fn(
@@ -101,7 +101,7 @@ def run_test_episode(model, env, max_steps=1000):  # -> reward, movie?
     return reward, np.stack(frames, 0)
 
 
-def main(name=input("Name: "), test=False, chkpt=None):
+def main(name=input("Name the run: "), test=False, chkpt=None):
     if not test:
         wandb.init(project="atari-breakout", name=name)
 
@@ -151,7 +151,7 @@ def main(name=input("Name: "), test=False, chkpt=None):
                 if random() < eps:
                     action = (
                         env.action_space.sample()
-                    )  # your agent here (this takes random actions)
+                    )
                 else:
                     action = m(torch.Tensor(last_observation).unsqueeze(
                         0)).max(-1)[-1].item()
@@ -195,6 +195,7 @@ def main(name=input("Name: "), test=False, chkpt=None):
                 epochs_since_tgt += 1
                 epochs_since_test += 1
 
+                "Run test episode"
                 if epochs_since_test > epochs_before_test:
                     rew, frames = run_test_episode(m, test_env)
                     # T, H, W, C
@@ -202,6 +203,7 @@ def main(name=input("Name: "), test=False, chkpt=None):
                         frames.transpose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
                     epochs_since_test = 0
 
+                "Update target model"
                 if epochs_since_tgt > tgt_model_update:
                     print("updating target model")
                     update_tgt_model(m, tgt)

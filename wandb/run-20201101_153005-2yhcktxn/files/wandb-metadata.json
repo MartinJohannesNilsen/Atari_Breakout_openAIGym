@@ -1,0 +1,21 @@
+{
+    "os": "macOS-10.15.7-x86_64-i386-64bit",
+    "python": "3.8.2",
+    "heartbeatAt": "2020-11-01T14:30:06.384421",
+    "startedAt": "2020-11-01T14:30:05.127556",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeni\u00f8r 3. \u00e5r/H\u00f8st 2020/TDAT3025 - Anvendt maskinl\u00e6ring med prosjekt/Maskinl\u00e6ringsprosjekt/code/agent.py",
+    "git": {
+        "remote": "https://github.com/Martinnilsen99/Atari_Breakout_openAIGym.git",
+        "commit": "d2af7f8bde23193c50df1acbd63913475c891497"
+    },
+    "email": "martinjnilsen@icloud.com",
+    "root": "/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeni\u00f8r 3. a\u030ar/H\u00f8st 2020/TDAT3025 - Anvendt maskinl\u00e6ring med prosjekt/Maskinl\u00e6ringsprosjekt/code",
+    "host": "Martin-sin-MBP",
+    "username": "martinnilsen",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3"
+}
