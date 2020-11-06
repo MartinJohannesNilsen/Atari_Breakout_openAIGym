@@ -35,7 +35,7 @@ class FrameStackingAndResizingEnv:
 
     @property
     def observation_space(self):
-        # gym.spaces.Box()
+        # Burde tatt i bruk Gyms egne: gym.spaces.Box()
         return np.zeros((self.n, self.h, self.w))
 
     @property
