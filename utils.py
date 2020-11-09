@@ -112,7 +112,9 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
         - last observation, a copy of the buffer of frames
         """
         image = self.env.reset()
-        image, _, _, _ = self.env.step(1)
+        image, _, done, _ = self.env.step(1)
+        if done:
+            self.reset()
         self.frame = image.copy()
         image = self._preprocess_frame(image)
         self.buffer = np.stack([image]*self.n, 0)
