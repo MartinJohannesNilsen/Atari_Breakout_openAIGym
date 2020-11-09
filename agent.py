@@ -13,11 +13,12 @@ from random import sample, random
 from tqdm import tqdm
 from utils import FrameStackingAndResizingEnv
 from models import ConvModel
-from hyperparams import do_boltzman_exploration, memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, tgt_model_update, epochs_before_test, eps_max, eps_min
+from hyperparams import do_boltzman_exploration, memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_max, eps_min
 
 
 @dataclass
-class Sarsd:  # State, action, reward, next_state, done
+class GameInformation:
+    "Dataclass including the elements state, action, reward, next_state and done"
     state: Any
     action: int
     reward: float
@@ -26,13 +27,20 @@ class Sarsd:  # State, action, reward, next_state, done
 
 
 class ReplayBuffer:
+    """
+    Buffer for achieving experience replay, storing earlier experiences.
+
+    Input:\n
+    - Buffer size, max number of elements in buffer (default 1_000_000)
+    """
+
     def __init__(self, buffer_size=1_000_000):
         self.buffer_size = buffer_size
         self.buffer = [None] * buffer_size
         self.i = 0
 
-    def insert(self, sars):
-        self.buffer[self.i % self.buffer_size] = sars
+    def insert(self, gameInfo):
+        self.buffer[self.i % self.buffer_size] = gameInfo
         self.i += 1
 
     def sample(self, num_samples):
@@ -42,36 +50,63 @@ class ReplayBuffer:
         return sample(self.buffer, num_samples)
 
 
-def update_tgt_model(m, tgt):
-    tgt.load_state_dict(m.state_dict())
+def update_target_model(m, target):
+    target.load_state_dict(m.state_dict())
 
 
-def train_step(model, state_transitions, tgt, num_actions, gamma=discount_factor):
-    cur_states = torch.stack(([torch.Tensor(s.state)for s in state_transitions]))
+def train_step(model, state_transitions, target, num_actions, gamma=discount_factor):
+    """
+    Function for running a training step
+
+    Input:\n
+    - model, the model used for calculating the Q-table
+    - state_transitions, the states in a batch from the replay buffer
+    - target, the target model
+    - num_actions, the number of actions in the actions_space from enviroment
+    - gamma, the discount factor (default discount_factor from hyperparams)
+
+    Output:\n
+    - loss, number representing the Huber loss of the training step
+    """
+    # Have to stack the torches because of sample size in state_transitions
+    current_states = torch.stack(([torch.Tensor(s.state)for s in state_transitions]))
     rewards = torch.stack(([torch.Tensor([s.reward])for s in state_transitions]))
     # The action mask indicates whether an action is valid or invalid for each state
-    mask = torch.stack(([torch.Tensor([0]) if s.done else torch.Tensor([1]) for s in state_transitions]))
+    action_mask = torch.stack(([torch.Tensor([0]) if s.done else torch.Tensor([1]) for s in state_transitions]))
     next_states = torch.stack(([torch.Tensor(s.next_state) for s in state_transitions]))
     actions = [s.action for s in state_transitions]
 
     # Need to compute the qvals of the next state
     with torch.no_grad():
-        qvals_next = tgt(next_states).max(-1)[0]  # (N, num_actions)
+        qvals_next = target(next_states).max(-1)[0]  # (N, num_actions)
 
     model.opt.zero_grad()
-    qvals = model(cur_states)  # (N, num_actions)
-    one_hot_actions = F.one_hot(torch.LongTensor(actions), num_actions)  # Multiplies qvals with one_hot_actions for efficiency, gived me the actions for the state
+    q_vals = model(current_states)  # (N, num_actions)
+    # Multiplies q_vals with one_hot_actions for efficiency, gived me the actions for the state
+    one_hot_actions = F.one_hot(torch.LongTensor(actions), num_actions)
 
-    loss_fn = nn.SmoothL1Loss()
-    loss = loss_fn(torch.sum(qvals * one_hot_actions, -1), rewards.squeeze() + mask[:, 0] * qvals_next * gamma)
-    # loss = (rewards + qvals_next - torch.sum(qvals*one_hot_actions, -1).mean()) # -1 for direction
+    loss_fn = nn.SmoothL1Loss()  # Huber loss
+    loss = loss_fn(torch.sum(q_vals * one_hot_actions, -1), rewards.squeeze() + action_mask[:, 0] * qvals_next * gamma)
+    # loss = (rewards + qvals_next - torch.sum(q_vals*one_hot_actions, -1).mean()) # -1 for direction # First implementation of lossfunction
     loss.backward()
     model.opt.step()
 
     return loss
 
 
-def run_test_episode(model, env, max_steps=1000):  # -> reward, movie?
+def run_test_episode(model, env, max_steps=1000):
+    """
+    Run one episode of the game 
+
+    Input:\n
+    - model, the model network
+    - env, the enviroment
+    - max_steps, the maximum steps possible to do in the enviroment
+
+    Output:\n
+    - reward, the score of the test epsiode
+    - movie, stack of frames making a movie
+    """
     frames = []
     obs = env.reset()
     frames.append(env.frame)
@@ -86,27 +121,28 @@ def run_test_episode(model, env, max_steps=1000):  # -> reward, movie?
         frames.append(env.frame)
         i += 1
 
-    return reward, np.stack(frames, 0)
+    movie = np.stack(frames, 0)
+
+    return reward, movie
 
 
 def main(name=input("Name the run: "), test=False, chkpt=None):
     if not test:
         wandb.init(project="atari-breakout", name=name)
 
+    "Create enviroments"
     env = gym.make("BreakoutDeterministic-v4")
     env = FrameStackingAndResizingEnv(env, 84, 84, 4)
-
     test_env = gym.make("BreakoutDeterministic-v4")
     test_env = FrameStackingAndResizingEnv(test_env, 84, 84, 4)
-
     last_observation = env.reset()
 
     "Set the model and targetmodel"
     m = ConvModel(env.observation_space.shape, env.action_space.n, lr=lr)
     if chkpt is not None:
         m.load_state_dict(torch.load(os.path.join(os.path.dirname(__file__), f"Models/{chkpt}")))
-    tgt = ConvModel(env.observation_space.shape, env.action_space.n)
-    update_tgt_model(m, tgt)
+    target = ConvModel(env.observation_space.shape, env.action_space.n)
+    update_target_model(m, target)
 
     "Create replaybuffer and other variables"
     rb = ReplayBuffer(memory_size)
@@ -121,52 +157,53 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
     try:
         while True:
             if test:
-                env.render("rgb_array")
+                env.render()
                 time.sleep(0.05)
             tq.update(1)
 
+            "Updating epsilon"
             eps = eps_decay ** (step_num)
             if test:
                 eps = 0
             elif eps <= eps_min:
                 eps = 0.1
-                
 
-            "Exploration vs exploitation"
+            "Exploration vs exploitation, Boltzmann with eps_decay vs Epsilon Greedy"
             if do_boltzman_exploration:
-                logits = m(torch.Tensor(last_observation).unsqueeze(0))[0]
-                action = torch.distributions.Categorical(
-                    logits=logits).sample().item()
-            else:
+                # Boltzmann exploration with an epsilon value for exploration or exploitation. Need to exploit for using the experience replay.
+                if random() < eps:
+                    logits = m(torch.Tensor(last_observation).unsqueeze(0))[0]
+                    action = torch.distributions.Categorical(logits=logits).sample().item()
+                else:
+                    action = m(torch.Tensor(last_observation).unsqueeze(
+                        0)).max(-1)[-1].item()
+            else:  # Epsilon Greedy with decreasing epsilon value. Decreases exponentially to the ep_min (eps_decay^step = eps)
                 if random() < eps:
                     action = (
                         env.action_space.sample()
                     )
                 else:
-                    action = m(torch.Tensor(last_observation).unsqueeze(
-                        0)).max(-1)[-1].item()
+                    action = m(torch.Tensor(last_observation).unsqueeze(0)).max(-1)[-1].item()
 
-            observation, reward, done, info = env.step(action)
+            "Perform step and insert observation to replaybuffer"
+            observation, reward, done, _ = env.step(action)
             total_reward += reward
-
-            "Insert to replaybuffer the new observation"
-            rb.insert(Sarsd(last_observation, action,
-                            reward, observation, done))
-
+            rb.insert(GameInformation(last_observation, action, reward, observation, done))
             last_observation = observation
 
+            "Reset and append total_reward to episode_rewards if done"
             if done:
-                episode_rewards.append(total_reward) 
+                episode_rewards.append(total_reward)
                 if test:
                     print(total_reward)
                 total_reward = 0
                 observation = env.reset()
 
+            "Train if ran enough steps since last training"
             steps_since_train += 1
             step_num += 1
-
             if ((not test) and rb.i > min_rb_size and steps_since_train > env_steps_before_train):
-                loss = train_step(m, rb.sample(sample_size), tgt, env.action_space.n)
+                loss = train_step(m, rb.sample(sample_size), target, env.action_space.n)
                 wandb.log(
                     {
                         "loss": loss.detach().item(),
@@ -188,11 +225,11 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
                     epochs_since_test = 0
 
                 "Update target model"
-                if epochs_since_tgt > tgt_model_update:
+                if epochs_since_tgt > epochs_before_tgt_model_update:
                     print("updating target model")
-                    update_tgt_model(m, tgt)
+                    update_target_model(m, target)
                     epochs_since_tgt = 0
-                    torch.save(tgt.state_dict(), os.path.join(os.path.dirname(__file__), f"Models/{step_num}.pth"))
+                    torch.save(target.state_dict(), os.path.join(os.path.dirname(__file__), f"Models/{step_num}.pth"))
 
                 steps_since_train = 0
 

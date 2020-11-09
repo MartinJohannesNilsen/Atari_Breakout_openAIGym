@@ -1,34 +1,23 @@
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from hyperparams import optimizer_function
-
-# Den jeg brukte til Cartpole, kun for referanse
-class Model(nn.Module):
-    def __init__(self, obs_shape, num_actions, lr=0.001):
-        super(Model, self).__init__()
-        assert len(obs_shape) == 1, "This network only works for flat observations"
-        self.obs_shape = obs_shape
-        self.num_actions = num_actions
-        self.net = torch.nn.Sequential(
-            torch.nn.Linear(obs_shape[0], 128),
-            torch.nn.ReLU(),
-            torch.nn.Linear(128, num_actions),
-        )
-        self.opt = optim.Adam(self.net.parameters(), lr=lr)
-
-    def forward(self, x):
-        return self.net(x)
+from hyperparams import optimizer_function, lr
 
 
 class ConvModel(nn.Module):
-    "Uses a variant of 2conv-nets with ReLU, and 2 fully connected layers"
-    def __init__(self, obs_shape, num_actions, lr=0.0001):
+    """
+    Uses a model consisting of 2x convolutional layers with ReLU, and 2x fully connected layers
+
+    Input:\n
+    - obs_shape, the shape of observation (length 3 consisting of channel, height and width)
+    - num_actions, number of actions in action_space
+    - lr, the models learningrate
+    """
+
+    def __init__(self, obs_shape, num_actions, lr=lr):
         assert len(obs_shape) == 3  # channel, height, and width
         super(ConvModel, self).__init__()
         self.obs_shape = obs_shape
         self.num_actions = num_actions
-        # canonical input shape = 84x84
         self.conv_net = torch.nn.Sequential(
             torch.nn.Conv2d(4, 16, (8, 8), stride=(4, 4)),
             torch.nn.ReLU(),
