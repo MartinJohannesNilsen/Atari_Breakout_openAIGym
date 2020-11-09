@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Any
 from random import sample, random
 from tqdm import tqdm
-from utils import FrameStackingAndResizingEnv
+from utils import FrameStackingAndResizingEnv, no_fire_action_space, NoFireInActionSpaceEnv
 from models import ConvModel
 from hyperparams import do_boltzman_exploration, memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_max, eps_min
 
@@ -132,9 +132,11 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
 
     "Create enviroments"
     env = gym.make("BreakoutDeterministic-v4")
-    env = FrameStackingAndResizingEnv(env, 84, 84, 4)
+    env = NoFireInActionSpaceEnv(env, 84, 84, 4)
+    # env = FrameStackingAndResizingEnv(env, 84, 84, 4)
     test_env = gym.make("BreakoutDeterministic-v4")
-    test_env = FrameStackingAndResizingEnv(test_env, 84, 84, 4)
+    test_env = NoFireInActionSpaceEnv(test_env, 84, 84, 4)
+    # test_env = FrameStackingAndResizingEnv(test_env, 84, 84, 4)
     last_observation = env.reset()
 
     "Set the model and targetmodel"

@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 import gym
-from random import randint
+from random import randint, choice
 import os
 
 
@@ -84,12 +84,43 @@ class FrameStackingAndResizingEnv:
 
     @property
     def observation_space(self):
-        # Burde tatt i bruk Gyms egne: gym.spaces.Box()
+        # Burde kanskje tatt i bruk Gyms egne: gym.spaces.Box()?
         return np.zeros((self.n, self.h, self.w))
 
     @property
     def action_space(self):
         return self.env.action_space
+
+
+class no_fire_action_space:
+    def __init__(self):
+        self.n = 3
+
+    def sample(self):
+        return choice([0, 2, 3])  # Removes the fire option (1)
+
+
+class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
+    def __init__(self, env, w, h, num_stack=4):
+        super(NoFireInActionSpaceEnv, self).__init__(env, w, h, num_stack)
+
+    def reset(self):
+        """
+        Resets the enviroment
+
+        Output:\n
+        - last observation, a copy of the buffer of frames
+        """
+        image = self.env.reset()
+        image, _, _, _ = self.env.step(1)
+        self.frame = image.copy()
+        image = self._preprocess_frame(image)
+        self.buffer = np.stack([image]*self.n, 0)
+        return self.buffer.copy()
+
+    @property
+    def action_space(self):
+        return no_fire_action_space()
 
 
 if __name__ == "__main__":
