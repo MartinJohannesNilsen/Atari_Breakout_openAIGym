@@ -11,9 +11,9 @@ from dataclasses import dataclass
 from typing import Any
 from random import sample, random
 from tqdm import tqdm
-from utils import FrameStackingAndResizingEnv, no_fire_action_space, NoFireInActionSpaceEnv
+from utils import Boltzmann, NoFireInActionSpaceEnv
 from models import ConvModel
-from hyperparams import do_boltzman_exploration, memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_max, eps_min
+from hyperparams import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method
 
 
 @dataclass
@@ -133,6 +133,7 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
     "Create enviroments"
     env = gym.make("BreakoutDeterministic-v4")
     env = NoFireInActionSpaceEnv(env, 84, 84, 4)
+
     # env = FrameStackingAndResizingEnv(env, 84, 84, 4)
     test_env = gym.make("BreakoutDeterministic-v4")
     test_env = NoFireInActionSpaceEnv(test_env, 84, 84, 4)
@@ -170,22 +171,8 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
             elif eps <= eps_min:
                 eps = 0.1
 
-            "Exploration vs exploitation, Boltzmann with eps_decay vs Epsilon Greedy"
-            if do_boltzman_exploration:
-                # Boltzmann exploration with an epsilon value for exploration or exploitation. Need to exploit for using the experience replay.
-                if random() < eps:
-                    logits = m(torch.Tensor(last_observation).unsqueeze(0))[0]
-                    action = torch.distributions.Categorical(logits=logits).sample().item()
-                else:
-                    action = m(torch.Tensor(last_observation).unsqueeze(
-                        0)).max(-1)[-1].item()
-            else:  # Epsilon Greedy with decreasing epsilon value. Decreases exponentially to the ep_min (eps_decay^step = eps)
-                if random() < eps:
-                    action = (
-                        env.action_space.sample()
-                    )
-                else:
-                    action = m(torch.Tensor(last_observation).unsqueeze(0)).max(-1)[-1].item()
+            "Exploration vs exploitation, Boltzmann with eps_decay vs Epsilon Greedy (defined in hyperparams.py)"
+            action = exploration_method(model=m, env=env, last_observation=last_observation, eps=eps)
 
             "Perform step and insert observation to replaybuffer"
             observation, reward, done, _ = env.step(action)

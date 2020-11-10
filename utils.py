@@ -1,9 +1,18 @@
-"""This class includes utils, as of now only the new enviroment with FrameStacking and rezising, with transition to grey-scale"""
+"""
+This class includes the follosing utilities:
+- New enviroment with framestacking and rezising, with transition to grey-scale
+- New enviroment which inherit the framsetack and resize, but also removes the fire action from action_space
+- Test framestack and print out frames as enviroment sees them
+- Exploration vs exploitation methods, both epsilon greedy and boltzmann with eps_decay
+"""
 import cv2
 import numpy as np
 import gym
-from random import randint, choice
+from random import choice
 import os
+from collections import deque
+from random import random
+import torch
 
 
 class FrameStackingAndResizingEnv:
@@ -125,28 +134,87 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
         return no_fire_action_space()
 
 
-if __name__ == "__main__":
+def test_FrameStackingAndresizingEnv():
     env = gym.make("BreakoutDeterministic-v4")
     env = FrameStackingAndResizingEnv(env, 480, 640)
-    print_path = os.path.join(os.path.dirname(__file__), f"Frame/")
+    print_path = os.path.join(os.path.dirname(__file__), f"Frames/")
 
     image = env.reset()
     idx = 0
-    ims = []
-    for i in range(image.shape[-1]):
-        ims.append(image[:, :, i])
+    ims = deque()
+    for i in range(image.shape[0]):
+        # ims.appendleft(image[i, :, :])
+        ims.append(image[i, :, :])
     if not cv2.imwrite(print_path+f"/{idx}.png", np.hstack(ims)):
         raise Exception("Could not write image")
 
     env.step(1)
 
-    for _ in range(10):
+    for _ in range(20):
         idx += 1
-        image, _, _, _ = env.step(randint(0, 3))
+        # image, _, _, _ = env.step(choice([0, 2, 3]))
+        image, _, _, _ = env.step(3)
 
-        ims = []
-        for i in range(image.shape[-1]):
-            ims.append(image[:, :, i])
-
+        ims = deque()
+        for i in range(image.shape[0]):
+            # ims.appendleft(image[i, :, :])
+            ims.append(image[i, :, :])
         if not cv2.imwrite(print_path+f"/{idx}.png", np.hstack(ims)):
             raise Exception("Could not write image")
+
+
+def Boltzmann(model, env, last_observation, eps=None):
+    """
+    Boltzmann takes the possibility of selecting one of the possible actions, and samples with the possibilites in mind. Also known as softmax exploration. 
+    If using the epsilon value, we take the eps_decay concept from epsilon greedy, but samples with the possibilites from Boltzmann. 
+
+    Input:\n
+    - model, the machine learning model
+    - env, the enviroment
+    - last_observation, the last observation recieved from env.step()
+    - eps, the epsilon value (Default None for allways using Boltzmann distrbution, else a value for own version with epsilon decay)
+
+    Output:\n
+    - action, the action in which to take next
+    """
+    if eps != None:
+        # Boltzmann exploration with epsilon_decay for exploration vs exploitation. Need to exploit for utilizing the experience replay.
+        if random() < eps:
+            # Explore with Boltzmann
+            logits = model(torch.Tensor(last_observation).unsqueeze(0))[0]  # One tensor, in which we sample from using Categorical
+            action = torch.distributions.Categorical(logits=logits).sample().item()
+        else:
+            # Exploit
+            action = model(torch.Tensor(last_observation).unsqueeze(0)).max(-1)[-1].item()
+    else:
+        # Use regular sampling from Boltzmann
+        logits = model(torch.Tensor(last_observation).unsqueeze(0))[0]
+        action = torch.distributions.Categorical(logits=logits).sample().item()
+    return action
+
+
+def EpsilonGreedy(model, env, last_observation, eps):
+    """
+    Epsilon Greedy with decreasing epsilon value. Implemented to decrease exponentially to the eps_min (eps_decay^step = eps). 
+    With eps_decay = 0.999999, it takes around 2_300_000 steps to get to eps_min = 0.1
+
+    Input:\n
+    - model, the machine learning model
+    - env, the enviroment
+    - last_observation, the last observation recieved from env.step()
+    - eps, the epsilon value (Default None for allways using Boltzmann distrbution, else a value for own version with epsilon decay)
+
+    Output:\n
+    - action, the action in which to take next
+    """
+    if random() < eps:
+        # Explore randomly
+        action = env.action_space.sample()
+    else:
+        # Exploit
+        action = model(torch.Tensor(last_observation).unsqueeze(0)).max(-1)[-1].item()
+    return action
+
+
+if __name__ == "__main__":
+    test_FrameStackingAndresizingEnv()
