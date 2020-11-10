@@ -134,7 +134,7 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
         return no_fire_action_space()
 
 
-def test_FrameStackingAndresizingEnv():
+def test_FrameStackingAndresizingEnv(number_of_frames=20):
     env = gym.make("BreakoutDeterministic-v4")
     env = FrameStackingAndResizingEnv(env, 480, 640)
     print_path = os.path.join(os.path.dirname(__file__), f"Frames/")
@@ -150,7 +150,7 @@ def test_FrameStackingAndresizingEnv():
 
     env.step(1)
 
-    for _ in range(20):
+    for _ in range(number_of_frames):
         idx += 1
         # image, _, _, _ = env.step(choice([0, 2, 3]))
         image, _, _, _ = env.step(3)
@@ -217,4 +217,4 @@ def EpsilonGreedy(model, env, last_observation, eps):
 
 
 if __name__ == "__main__":
-    test_FrameStackingAndresizingEnv()
+    test_FrameStackingAndresizingEnv(number_of_frames=20)
