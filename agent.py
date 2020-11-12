@@ -9,11 +9,11 @@ import os
 import wandb
 from dataclasses import dataclass
 from typing import Any
-from random import sample, random
+from random import sample
 from tqdm import tqdm
-from utils import Boltzmann, NoFireInActionSpaceEnv
+from utils import NoFireInActionSpaceEnv
 from models import ConvModel
-from hyperparams import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method
+from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method
 
 
 @dataclass

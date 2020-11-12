@@ -137,7 +137,7 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
 def test_FrameStackingAndresizingEnv(number_of_frames=20):
     env = gym.make("BreakoutDeterministic-v4")
     env = FrameStackingAndResizingEnv(env, 480, 640)
-    print_path = os.path.join(os.path.dirname(__file__), f"Frames/")
+    print_path = os.path.join(os.path.dirname(__file__), f"FramestackingAndPreprocessing/")
 
     image = env.reset()
     idx = 0

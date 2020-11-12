@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from hyperparams import optimizer_function, lr
+from constants import optimizer_function, lr
 
 
 class ConvModel(nn.Module):

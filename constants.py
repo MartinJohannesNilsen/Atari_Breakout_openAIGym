@@ -1,4 +1,4 @@
-"List of hyperparameters given for the machine learning model and agent"
+"List of defined hyperparameters and methods used for model optimization and agent exploration vs exploitation"
 from utils import Boltzmann, EpsilonGreedy
 import torch.optim as optim
 
@@ -13,16 +13,8 @@ env_steps_before_train = 16
 epochs_before_tgt_model_update = 5000
 epochs_before_test = 1500
 
+"Other variables to tune"
 optimizer_function = optim.Adam
 # optimizer_function = optim.RMSprop
-
 exploration_method = Boltzmann
 # exploration_method = EpsilonGreedy
-
-
-"""
-Første gang kjører den min_rb_size ganger før den går videre, for å fylle replaybuffer
-16 steg før den begynner trene
-1500 epoker før test
-og 5000 epoker før den oppdaterer target model
-"""
