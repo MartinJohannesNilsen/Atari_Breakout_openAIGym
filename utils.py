@@ -1,6 +1,6 @@
 """
-This class includes the follosing utilities:
-- New enviroment with framestacking and rezising, with transition to grey-scale
+This class includes the following utilities:
+- New enviroment with framestacking and rezising, transitioned to grey-scale
 - New enviroment which inherit the framsetack and resize, but also removes the fire action from action_space
 - Test framestack and print out frames as enviroment sees them
 - Exploration vs exploitation methods, both epsilon greedy and boltzmann with eps_decay
@@ -140,26 +140,26 @@ def test_FrameStackingAndresizingEnv(number_of_frames=20):
     print_path = os.path.join(os.path.dirname(__file__), f"FramestackingAndPreprocessing/")
 
     image = env.reset()
-    idx = 0
+    i = 0
     ims = deque()
     for i in range(image.shape[0]):
         # ims.appendleft(image[i, :, :])
         ims.append(image[i, :, :])
-    if not cv2.imwrite(print_path+f"/{idx}.png", np.hstack(ims)):
+    if not cv2.imwrite(print_path+f"/{i}.png", np.hstack(ims)):
         raise Exception("Could not write image")
 
     env.step(1)
 
     for _ in range(number_of_frames):
-        idx += 1
+        i += 1
         # image, _, _, _ = env.step(choice([0, 2, 3]))
-        image, _, _, _ = env.step(3)
+        image, _, _, _ = env.step(3)  # Move to the left
 
         ims = deque()
         for i in range(image.shape[0]):
             # ims.appendleft(image[i, :, :])
             ims.append(image[i, :, :])
-        if not cv2.imwrite(print_path+f"/{idx}.png", np.hstack(ims)):
+        if not cv2.imwrite(print_path+f"/{i}.png", np.hstack(ims)):
             raise Exception("Could not write image")
 
 
