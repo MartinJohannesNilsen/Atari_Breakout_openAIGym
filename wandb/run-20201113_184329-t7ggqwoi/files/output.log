@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "agent.py", line 233, in <module>
+    argh.dispatch_command(main)
+  File "/home/student/.local/lib/python3.8/site-packages/argh/dispatching.py", line 306, in dispatch_command
+    dispatch(parser, *args, **kwargs)
+  File "/home/student/.local/lib/python3.8/site-packages/argh/dispatching.py", line 174, in dispatch
+    for line in lines:
+  File "/home/student/.local/lib/python3.8/site-packages/argh/dispatching.py", line 277, in _execute_command
+    for line in result:
+  File "/home/student/.local/lib/python3.8/site-packages/argh/dispatching.py", line 260, in _call
+    result = function(*positional, **keywords)
+  File "agent.py", line 136, in main
+    env = FrameStackingAndResizingEnv(env, 84, 84, 4)
+NameError: name 'FrameStackingAndResizingEnv' is not defined

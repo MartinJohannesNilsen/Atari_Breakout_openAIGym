@@ -16,5 +16,5 @@ epochs_before_test = 1500
 "Other variables to tune"
 optimizer_function = optim.Adam
 # optimizer_function = optim.RMSprop
-exploration_method = Boltzmann
-# exploration_method = EpsilonGreedy
+# exploration_method = Boltzmann
+exploration_method = EpsilonGreedy
