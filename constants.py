@@ -3,7 +3,7 @@ from utils import Boltzmann, EpsilonGreedy, FrameStackingAndResizingEnv, NoFireI
 import torch.optim as optim
 
 memory_size = 1_000_000
-min_rb_size = 50_000
+min_rb_size = 50
 sample_size = 32
 lr = 0.0001
 eps_min = 0.1
@@ -16,7 +16,7 @@ epochs_before_test = 1500
 "Other variables to tune"
 optimizer_function = optim.Adam
 # optimizer_function = optim.RMSprop
-exploration_method = Boltzmann
-# exploration_method = EpsilonGreedy
-env_type = FrameStackingAndResizingEnv
-# env_type = NoFireInActionSpaceEnv
+# exploration_method = Boltzmann
+exploration_method = EpsilonGreedy
+# env_type = FrameStackingAndResizingEnv
+env_type = NoFireInActionSpaceEnv

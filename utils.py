@@ -102,14 +102,24 @@ class FrameStackingAndResizingEnv:
 
 
 class no_fire_action_space:
+    """
+    Action space for the enviroment without the action "fire". 
+    New mapping of numbers to steps is ['noop', 'right', 'left']
+    """
+
     def __init__(self):
         self.n = 3
 
     def sample(self):
-        return choice([0, 2, 3])  # Removes the fire option (1)
+        # return choice([0, 2, 3])  # Removes the fire option (1)
+        return choice([0, 1, 2])  # Removes the fire option, now 0=Noop, 1=right and 2=left
 
 
 class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
+    """
+    Enviroment in which removes the responsibility of starting the game from the agent, and starts the game at reset()
+    """
+
     def __init__(self, env, w, h, num_stack=4):
         super(NoFireInActionSpaceEnv, self).__init__(env, w, h, num_stack)
 
@@ -132,6 +142,18 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
     @property
     def action_space(self):
         return no_fire_action_space()
+
+    def step(self, action):
+        """
+        Run the steps as given by OpenAI Gym, but map the actions to the new action_space ['noop', 'right', 'left'], instead of the original ['noop', 'fire', 'right', 'left'] 
+        """
+        assert action < 3, "Action should be in the interval [0,2] with reduced action_space"
+        if action == 1:
+            return super(NoFireInActionSpaceEnv, self).step(2)  # Right
+        elif action == 2:
+            return super(NoFireInActionSpaceEnv, self).step(3)  # Left
+        else:
+            return super(NoFireInActionSpaceEnv, self).step(0)  # Noop
 
 
 def test_FrameStackingAndresizingEnv(number_of_frames=20):

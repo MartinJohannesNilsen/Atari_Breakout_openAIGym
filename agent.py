@@ -1,3 +1,4 @@
+from threading import local
 import gym
 import torch
 import torch.nn as nn
@@ -11,7 +12,6 @@ from dataclasses import dataclass
 from typing import Any
 from random import sample
 from tqdm import tqdm
-from utils import NoFireInActionSpaceEnv, FrameStackingAndResizingEnv
 from models import ConvModel
 from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type
 
@@ -126,13 +126,13 @@ def run_test_episode(model, env, max_steps=1000):
     return reward, movie
 
 
-def main(name=None, chkpt=None, test_run=False, local_run=False):
+def main(name=None, chkpt=None, test_run=False, local_run=True):
     "Sync to wandb as standard, but not if test_run or local_run is true"
     if (not test_run) and (not local_run):
         if name == None:
             name = input("Name the run: ")
         wandb.init(project="atari-breakout", name=name)
-    
+
     "Create enviroments"
     env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     test_env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
@@ -191,14 +191,15 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
             step_num += 1
             if ((not test_run) and rb.i > min_rb_size and steps_since_train > env_steps_before_train):
                 loss = train_step(m, rb.sample(sample_size), target, env.action_space.n)
-                wandb.log(
-                    {
-                        "loss": loss.detach().item(),
-                        "eps": eps,
-                        "avg_reward": np.mean(episode_rewards),
-                    },
-                    step=step_num,
-                )
+                if not local_run:
+                    wandb.log(
+                        {
+                            "loss": loss.detach().item(),
+                            "eps": eps,
+                            "avg_reward": np.mean(episode_rewards),
+                        },
+                        step=step_num,
+                    )
                 episode_rewards = []
                 epochs_since_tgt += 1
                 epochs_since_test += 1
@@ -206,9 +207,8 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
                 "Run test_run episode"
                 if epochs_since_test > epochs_before_test:
                     rew, frames = run_test_episode(m, test_env)
-                    # T, H, W, C
-                    wandb.log({'test_reward': rew, 'test_video': wandb.Video(
-                        frames.transpose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
+                    if not local_run:
+                        wandb.log({'test_reward': rew, 'test_video': wandb.Video(frames.transpose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
                     epochs_since_test = 0
 
                 "Update target model"
