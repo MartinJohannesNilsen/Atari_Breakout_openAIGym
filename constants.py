@@ -1,5 +1,5 @@
 "List of defined hyperparameters and methods used for model optimization and agent exploration vs exploitation"
-from utils import Boltzmann, EpsilonGreedy
+from utils import Boltzmann, EpsilonGreedy, FrameStackingAndResizingEnv, NoFireInActionSpaceEnv
 import torch.optim as optim
 
 memory_size = 1_000_000
@@ -18,3 +18,5 @@ optimizer_function = optim.Adam
 # optimizer_function = optim.RMSprop
 exploration_method = Boltzmann
 # exploration_method = EpsilonGreedy
+env_type = FrameStackingAndResizingEnv
+# env_type = NoFireInActionSpaceEnv

@@ -13,7 +13,7 @@ from random import sample
 from tqdm import tqdm
 from utils import NoFireInActionSpaceEnv
 from models import ConvModel
-from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method
+from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type
 
 
 @dataclass
@@ -131,13 +131,8 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
         wandb.init(project="atari-breakout", name=name)
 
     "Create enviroments"
-    env = gym.make("BreakoutDeterministic-v4")
-    env = NoFireInActionSpaceEnv(env, 84, 84, 4)
-
-    # env = FrameStackingAndResizingEnv(env, 84, 84, 4)
-    test_env = gym.make("BreakoutDeterministic-v4")
-    test_env = NoFireInActionSpaceEnv(test_env, 84, 84, 4)
-    # test_env = FrameStackingAndResizingEnv(test_env, 84, 84, 4)
+    env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
+    test_env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     last_observation = env.reset()
 
     "Set the model and targetmodel"
