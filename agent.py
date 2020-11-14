@@ -132,7 +132,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
         if name == None:
             name = input("Name the run: ")
         wandb.init(project="atari-breakout", name=name)
-    
+
     "Create enviroments"
     env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     test_env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
