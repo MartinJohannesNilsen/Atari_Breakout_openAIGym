@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Any
 from random import sample
 from tqdm import tqdm
-from utils import NoFireInActionSpaceEnv
+from utils import NoFireInActionSpaceEnv, FrameStackingAndResizingEnv
 from models import ConvModel
 from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type
 
@@ -163,8 +163,8 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
             eps = eps_decay ** (step_num)
             if test:
                 eps = 0
-            elif eps <= eps_min:
-                eps = 0.1
+            elif eps < eps_min:
+                eps = eps_min
 
             "Exploration vs exploitation, Boltzmann with eps_decay vs Epsilon Greedy (defined in hyperparams.py)"
             action = exploration_method(model=m, env=env, last_observation=last_observation, eps=eps)

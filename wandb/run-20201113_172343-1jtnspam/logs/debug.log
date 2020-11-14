@@ -1,0 +1,92 @@
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_setup.py:_flush():68] setting env: {}
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_setup.py:_flush():68] multiprocessing start_methods=fork,spawn,forkserver
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_setup.py:_flush():68] setting login settings: {}
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_setup.py:_flush():68] setting login settings: {'api_key': '57878dd06745f877fc0ce405c74e1a57103391f0'}
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_init.py:_log_setup():302] Logging user logs to /home/student/code/wandb/run-20201113_172343-1jtnspam/logs/debug.log
+2020-11-13 17:23:43,500 INFO    MainThread:61637 [wandb_init.py:_log_setup():303] Logging internal logs to /home/student/code/wandb/run-20201113_172343-1jtnspam/logs/debug-internal.log
+2020-11-13 17:23:44,610 INFO    MainThread:61637 [wandb_run.py:_console_start():1213] atexit reg
+2020-11-13 17:23:44,611 INFO    MainThread:61637 [wandb_run.py:_redirect():1083] redirect: SettingsConsole.REDIRECT
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [wandb_run.py:_redirect():1086] Redirecting console.
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [redirect.py:install():204] install start
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [redirect.py:install():219] install stop
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [redirect.py:install():204] install start
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [redirect.py:install():219] install stop
+2020-11-13 17:23:44,612 INFO    MainThread:61637 [wandb_run.py:_redirect():1130] Redirects installed.
+2020-11-13 17:35:48,424 ERROR   MainThread:61637 [util.py:get_module():144] Error importing optional module moviepy.editor
+Traceback (most recent call last):
+  File "/home/student/.local/lib/python3.8/site-packages/wandb/util.py", line 139, in get_module
+    return import_module(name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'moviepy'
+2020-11-13 17:35:48,429 INFO    MainThread:61637 [wandb_run.py:_atexit_cleanup():1186] got exitcode: 1
+2020-11-13 17:35:48,430 INFO    MainThread:61637 [wandb_run.py:_restore():1158] restore
+2020-11-13 17:35:48,430 INFO    MainThread:61637 [redirect.py:uninstall():223] uninstall start
+2020-11-13 17:35:48,430 INFO    MainThread:61637 [redirect.py:_stop():278] _stop: stdout
+2020-11-13 17:35:48,431 INFO    stdout    :61637 [redirect.py:_pipe_relay():120] relay done saw last write: stdout
+2020-11-13 17:35:48,431 INFO    stdout    :61637 [redirect.py:_pipe_relay():136] relay done done: stdout
+2020-11-13 17:35:48,431 INFO    MainThread:61637 [redirect.py:_stop():284] _stop closed: stdout
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():290] _stop joined: stdout
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():292] _stop rd closed: stdout
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:uninstall():227] uninstall done
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:uninstall():223] uninstall start
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():278] _stop: stderr
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():284] _stop closed: stderr
+2020-11-13 17:35:48,432 INFO    stderr    :61637 [redirect.py:_pipe_relay():120] relay done saw last write: stderr
+2020-11-13 17:35:48,432 INFO    stderr    :61637 [redirect.py:_pipe_relay():136] relay done done: stderr
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():290] _stop joined: stderr
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:_stop():292] _stop rd closed: stderr
+2020-11-13 17:35:48,432 INFO    MainThread:61637 [redirect.py:uninstall():227] uninstall done
+2020-11-13 17:35:48,439 INFO    MainThread:61637 [wandb_run.py:_wait_for_finish():1300] got exit ret: uuid: "b5466238b49848928b2b8a95a99f9f7c"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 637
+      total_bytes: 637
+    }
+  }
+}
+
+2020-11-13 17:35:50,445 INFO    MainThread:61637 [wandb_run.py:_wait_for_finish():1300] got exit ret: uuid: "09a951d994ae451a93c33dd2d4138ef6"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+    }
+    pusher_stats {
+      uploaded_bytes: 128354
+      total_bytes: 128354
+    }
+  }
+}
+
+2020-11-13 17:35:52,451 INFO    MainThread:61637 [wandb_run.py:_wait_for_finish():1300] got exit ret: uuid: "6ed450a74fb447b38e6df0f123cb965c"
+response {
+  poll_exit_response {
+    done: true
+    exit_result {
+    }
+    file_counts {
+      wandb_count: 5
+    }
+    pusher_stats {
+      uploaded_bytes: 128354
+      total_bytes: 128354
+    }
+  }
+}
+
+2020-11-13 17:35:53,628 INFO    MainThread:61637 [wandb_run.py:_show_summary():1443] rendering summary
+2020-11-13 17:35:53,630 INFO    MainThread:61637 [wandb_run.py:_show_history():1481] rendering history
+2020-11-13 17:35:53,632 INFO    MainThread:61637 [wandb_run.py:_show_files():1509] logging synced files
+2020-11-13 17:35:53,634 INFO    MainThread:61637 [internal.py:handle_exit():138] Internal process exited

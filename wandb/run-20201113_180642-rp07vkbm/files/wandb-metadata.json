@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.4.0-53-generic-x86_64-with-glibc2.29",
+    "python": "3.8.5",
+    "heartbeatAt": "2020-11-13T18:06:44.018479",
+    "startedAt": "2020-11-13T18:06:42.999433",
+    "docker": null,
+    "cpu_count": 32,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "codePath": "agent.py",
+    "program": "agent.py",
+    "git": {
+        "remote": "https://github.com/Martinnilsen99/Atari_Breakout_openAIGym.git",
+        "commit": "91dbe21681e49941e36e9c48306dd21f6d7a970b"
+    },
+    "email": null,
+    "root": "/home/student/code",
+    "host": "zeus",
+    "username": "student",
+    "executable": "/usr/bin/python3"
+}
