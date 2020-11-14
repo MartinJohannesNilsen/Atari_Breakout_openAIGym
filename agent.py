@@ -104,7 +104,7 @@ def run_test_episode(model, env, max_steps=1000):
     - max_steps, the maximum steps possible to do in the enviroment
 
     Output:\n
-    - reward, the score of the test epsiode
+    - reward, the score of the test_run epsiode
     - movie, stack of frames making a movie
     """
     frames = []
@@ -126,10 +126,13 @@ def run_test_episode(model, env, max_steps=1000):
     return reward, movie
 
 
-def main(name=input("Name the run: "), test=False, chkpt=None):
-    if not test:
+def main(name=None, chkpt=None, test_run=False, local_run=False):
+    "Sync to wandb as standard, but not if test_run or local_run is true"
+    if (not test_run) and (not local_run):
+        if name == None:
+            name = input("Name the run: ")
         wandb.init(project="atari-breakout", name=name)
-
+    
     "Create enviroments"
     env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     test_env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
@@ -154,14 +157,14 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
     tq = tqdm()
     try:
         while True:
-            if test:
+            if test_run:
                 env.render()
                 time.sleep(0.05)
             tq.update(1)
 
             "Updating epsilon"
             eps = eps_decay ** (step_num)
-            if test:
+            if test_run:
                 eps = 0
             elif eps < eps_min:
                 eps = eps_min
@@ -178,7 +181,7 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
             "Reset and append total_reward to episode_rewards if done"
             if done:
                 episode_rewards.append(total_reward)
-                if test:
+                if test_run:
                     print(total_reward)
                 total_reward = 0
                 observation = env.reset()
@@ -186,7 +189,7 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
             "Train if ran enough steps since last training"
             steps_since_train += 1
             step_num += 1
-            if ((not test) and rb.i > min_rb_size and steps_since_train > env_steps_before_train):
+            if ((not test_run) and rb.i > min_rb_size and steps_since_train > env_steps_before_train):
                 loss = train_step(m, rb.sample(sample_size), target, env.action_space.n)
                 wandb.log(
                     {
@@ -200,7 +203,7 @@ def main(name=input("Name the run: "), test=False, chkpt=None):
                 epochs_since_tgt += 1
                 epochs_since_test += 1
 
-                "Run test episode"
+                "Run test_run episode"
                 if epochs_since_test > epochs_before_test:
                     rew, frames = run_test_episode(m, test_env)
                     # T, H, W, C
