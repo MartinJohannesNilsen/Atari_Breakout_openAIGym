@@ -163,6 +163,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
     tq = tqdm()
     try:
         while True:
+            bestReward = 250
             if test_run:
                 env.render()
                 time.sleep(0.05)
@@ -213,8 +214,13 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
                 "Run test_run episode"
                 if epochs_since_test > epochs_before_test:
                     rew, frames = run_test_episode(m, test_env)
-                    if not local_run:
+                    
+                    "Only log good videos"
+                    if rew > bestReward:
+                        bestReward = rew
                         wandb.log({'test_reward': rew, 'test_video': wandb.Video(frames.transpose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
+                    else:
+                        wandb.log({'test_reward': rew})
                     epochs_since_test = 0
 
                 "Update target model"
