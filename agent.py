@@ -209,7 +209,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
                     rew, frames = run_test_episode(m, test_env)
                     if rew > bestReward:
                         wandb.log({'test_reward': rew, 'test_video': wandb.Video(
-                            frames.transpose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
+                            frames.trgitanspose(0, 3, 1, 2), str(rew), fps=25, format='mp4')})
                     else:
                         wandb.log({'test_reward': rew})
                     epochs_since_test = 0
