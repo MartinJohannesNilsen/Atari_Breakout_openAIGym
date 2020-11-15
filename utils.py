@@ -122,6 +122,7 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
 
     def __init__(self, env, w, h, num_stack=4):
         super(NoFireInActionSpaceEnv, self).__init__(env, w, h, num_stack)
+        self.lives = 5
 
     def reset(self):
         """
@@ -132,8 +133,7 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
         """
         image = self.env.reset()
         image, _, done, _ = self.env.step(1)
-        if done:
-            self.reset()
+        self.lives = 5
         self.frame = image.copy()
         image = self._preprocess_frame(image)
         self.buffer = np.stack([image]*self.n, 0)
@@ -148,12 +148,20 @@ class NoFireInActionSpaceEnv(FrameStackingAndResizingEnv):
         Run the steps as given by OpenAI Gym, but map the actions to the new action_space ['noop', 'right', 'left'], instead of the original ['noop', 'fire', 'right', 'left'] 
         """
         assert action < 3, "Action should be in the interval [0,2] with reduced action_space"
-        if action == 1:
-            return super(NoFireInActionSpaceEnv, self).step(2)  # Right
+        if action == 0:
+            observation, reward, done, info = super(NoFireInActionSpaceEnv, self).step(0)  # Noop
+        elif action == 1:
+            observation, reward, done, info = super(NoFireInActionSpaceEnv, self).step(2)  # Right
         elif action == 2:
-            return super(NoFireInActionSpaceEnv, self).step(3)  # Left
+            observation, reward, done, info = super(NoFireInActionSpaceEnv, self).step(3)  # Left
         else:
-            return super(NoFireInActionSpaceEnv, self).step(0)  # Noop
+            observation, reward, done, info = None
+
+        if info['ale.lives'] < self.lives:
+            self.env.step(1)
+            self.lives -= 1
+
+        return observation, reward, done, info
 
 
 def test_FrameStackingAndresizingEnv(number_of_frames=20):

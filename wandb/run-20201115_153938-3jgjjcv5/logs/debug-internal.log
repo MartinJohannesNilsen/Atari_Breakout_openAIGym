@@ -1,0 +1,669 @@
+2020-11-15 15:39:41,314 INFO    MainThread:48015 [internal.py:wandb_internal():62] W&B internal server running at pid: 48015
+2020-11-15 15:39:41,320 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: check_version
+2020-11-15 15:39:41,321 INFO    WriterThread:48015 [datastore.py:open_for_write():76] open: wandb/run-20201115_153938-3jgjjcv5/run-3jgjjcv5.wandb
+2020-11-15 15:39:41,326 DEBUG   SenderThread:48015 [sender.py:send():89] send: header
+2020-11-15 15:39:41,326 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:39:41,326 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: check_version
+2020-11-15 15:39:41,341 DEBUG   Thread-10 :48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): pypi.org:443
+2020-11-15 15:39:41,401 DEBUG   Thread-10 :48015 [connectionpool.py:_make_request():433] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 51661
+2020-11-15 15:39:41,426 DEBUG   SenderThread:48015 [sender.py:send():89] send: run
+2020-11-15 15:39:41,439 DEBUG   SenderThread:48015 [cmd.py:execute():718] Popen(['git', 'cat-file', '--batch-check'], cwd=/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeniør 3. år/Høst 2020/TDAT3025 - Anvendt maskinlæring med prosjekt/Maskinlæringsprosjekt/code, universal_newlines=False, shell=None, istream=<valid stream>)
+2020-11-15 15:39:41,495 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:39:41,762 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:39:41,774 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: run_start
+2020-11-15 15:39:41,789 INFO    SenderThread:48015 [dir_watcher.py:__init__():167] watching files in: wandb/run-20201115_153938-3jgjjcv5/files
+2020-11-15 15:39:41,790 INFO    SenderThread:48015 [sender.py:_start_run_threads():486] run started: 3jgjjcv5 with start time 1605451179
+2020-11-15 15:39:41,790 DEBUG   SenderThread:48015 [sender.py:send():89] send: summary
+2020-11-15 15:39:41,792 DEBUG   HandlerThread:48015 [cmd.py:execute():718] Popen(['git', 'cat-file', '--batch-check'], cwd=/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeniør 3. år/Høst 2020/TDAT3025 - Anvendt maskinlæring med prosjekt/Maskinlæringsprosjekt/code, universal_newlines=False, shell=None, istream=<valid stream>)
+2020-11-15 15:39:41,801 INFO    SenderThread:48015 [sender.py:_save_file():567] saving file wandb-summary.json with policy end
+2020-11-15 15:39:41,818 DEBUG   HandlerThread:48015 [cmd.py:execute():718] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeniør 3. år/Høst 2020/TDAT3025 - Anvendt maskinlæring med prosjekt/Maskinlæringsprosjekt/code, universal_newlines=False, shell=None, istream=None)
+2020-11-15 15:39:41,995 DEBUG   SenderThread:48015 [sender.py:send():89] send: files
+2020-11-15 15:39:41,996 INFO    SenderThread:48015 [sender.py:_save_file():567] saving file wandb-metadata.json with policy now
+2020-11-15 15:39:42,016 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:39:42,017 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:39:42,017 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:39:42,027 DEBUG   Thread-17 :48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:39:42,030 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:39:42,265 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:39:42,272 DEBUG   Thread-17 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:39:42,288 DEBUG   Thread-17 :48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-11-15 15:39:42,734 DEBUG   Thread-17 :48015 [connectionpool.py:_make_request():433] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/martinnilsen99/dqn-tutorial/3jgjjcv5/wandb-metadata.json?Expires=1605537582&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=KCX6pT5F2iCD7Wo5jioo8heBwhhRDUYo9lJhsA2cPD3Z4HKJnlYkqjHNojTLvMdFkj6qgMOV2gsFYrUMVzY4S8k3MWMBH%2BNr2rXU92nqPQH6wPkh0NAZQsSL6tEjq%2FLKOiXfEB7CjdqQrvh49UaMYB9Hv%2FSxvtA6H%2F9bANKjGc31Jq9OyOIcqeSg85U2xnN70WlOsiY%2BAzRNJ42N3yArx8Fk99yj%2FKSbgEQ1vrsOtI0Scz61jzvjfVY4TcPflyfdfaxgf5%2BCpBfXFbwGsykQ8utvQ5GOL5n49EWt41M1DIGNpIC6T%2Bqk3ZV08oYq4V0OHTWN6BLeWGUkfC0%2Fi4FwXA%3D%3D HTTP/1.1" 200 0
+2020-11-15 15:39:42,739 INFO    Thread-17 :48015 [upload_job.py:push():112] Uploaded file /var/folders/rl/_2431lt13lg4yzzqkl3xhm0m0000gn/T/tmpsc1h21cdwandb/1zm5b09y-wandb-metadata.json
+2020-11-15 15:39:42,794 INFO    Thread-15 :48015 [dir_watcher.py:_on_file_created():215] file/dir created: wandb/run-20201115_153938-3jgjjcv5/files/wandb-summary.json
+2020-11-15 15:39:42,795 INFO    Thread-15 :48015 [dir_watcher.py:_on_file_created():215] file/dir created: wandb/run-20201115_153938-3jgjjcv5/files/wandb-metadata.json
+2020-11-15 15:39:42,795 INFO    Thread-15 :48015 [dir_watcher.py:_on_file_created():215] file/dir created: wandb/run-20201115_153938-3jgjjcv5/files/requirements.txt
+2020-11-15 15:39:42,796 INFO    Thread-15 :48015 [dir_watcher.py:_on_file_created():215] file/dir created: wandb/run-20201115_153938-3jgjjcv5/files/output.log
+2020-11-15 15:39:43,806 DEBUG   Thread-11 :48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:39:44,043 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:39:45,206 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:39:47,399 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:39:49,748 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:39:49,934 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:39:54,308 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:39:54,500 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:39:57,273 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:39:57,274 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:39:57,274 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:39:57,281 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:39:57,514 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:39:58,869 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:39:59,068 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:03,370 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:03,631 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:07,908 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:08,094 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:12,452 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:12,524 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:40:12,524 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:40:12,525 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:40:12,533 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:40:12,639 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:12,765 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:40:17,008 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:17,201 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:21,551 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:21,770 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:26,105 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:26,286 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:27,774 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:40:27,774 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:40:27,775 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:40:27,784 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:40:28,020 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:40:30,649 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:30,839 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:35,198 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:35,389 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:39,743 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:43,030 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:40:43,030 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:40:43,030 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:40:43,039 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:40:43,271 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:40:44,291 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:48,829 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:49,010 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:40:53,370 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:57,925 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:40:58,279 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:40:58,279 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:40:58,280 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:40:58,289 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:40:58,520 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:41:02,480 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:02,664 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:41:07,035 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:11,575 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:13,527 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:41:13,527 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:41:13,527 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:41:13,534 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:41:13,757 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:41:16,114 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:16,301 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:41:20,656 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:25,207 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:28,763 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:41:28,763 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:41:28,764 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:41:28,775 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:41:29,017 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:41:29,751 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:29,924 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:41:34,305 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:38,835 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:43,378 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:43,565 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:41:44,027 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:41:44,028 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:41:44,028 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:41:44,037 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:41:44,271 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:41:47,915 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:52,473 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:57,025 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:41:57,208 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:41:59,280 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:41:59,280 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:41:59,280 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:41:59,288 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:41:59,515 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:42:01,572 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:06,134 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:10,685 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:11,009 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:42:14,522 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:42:14,522 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:42:14,523 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:42:14,530 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:42:14,760 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:42:15,247 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:19,800 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:24,332 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:24,518 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:42:28,897 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:29,768 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:42:29,769 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:42:29,769 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:42:29,777 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:42:30,011 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:42:33,430 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:37,981 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:38,161 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:42:42,548 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:45,021 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:42:45,021 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:42:45,022 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:42:45,030 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:42:45,262 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:42:47,107 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:51,657 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:42:51,838 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:42:56,202 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:00,269 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:43:00,270 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:43:00,270 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:43:00,277 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:43:00,500 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:43:00,733 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:05,276 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:05,458 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:43:09,826 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:14,365 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:15,509 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:43:15,509 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:43:15,510 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:43:15,517 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:43:15,747 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:43:18,911 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:19,096 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:43:23,448 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:28,003 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:30,757 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:43:30,757 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:43:30,758 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:43:30,767 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:43:31,003 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:43:32,554 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:32,749 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:43:37,112 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:41,645 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:46,010 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:43:46,011 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:43:46,011 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:43:46,018 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:43:46,249 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:43:46,254 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:46,441 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:43:50,691 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:55,223 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:59,756 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:43:59,968 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:44:01,258 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:44:01,259 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:44:01,259 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:44:01,268 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:44:01,497 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:44:04,289 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:08,812 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:13,334 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:13,520 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:44:16,502 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:44:16,503 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:44:16,503 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:44:16,511 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:44:16,736 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:44:17,864 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:22,372 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:26,892 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:27,078 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:44:31,419 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:31,743 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:44:31,743 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:44:31,744 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:44:31,751 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:44:31,976 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:44:35,939 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:40,461 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:44,981 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:46,985 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:44:46,986 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:44:46,986 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:44:46,994 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:44:47,218 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:44:49,505 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:54,037 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:58,566 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:44:58,745 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:45:02,227 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:45:02,229 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:45:02,229 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:45:02,237 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:45:02,657 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:45:03,094 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:07,615 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:12,139 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:16,647 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:17,664 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:45:17,665 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:45:17,665 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:45:17,673 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:45:17,906 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:45:21,189 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:25,708 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:30,240 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:30,429 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:45:32,917 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:45:32,918 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:45:32,918 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:45:32,927 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:45:33,156 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:45:34,764 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:39,297 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:43,823 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:48,163 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:45:48,164 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:45:48,164 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:45:48,172 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:45:48,397 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:45:48,401 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:52,874 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:45:57,396 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:01,911 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:02,096 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:46:03,405 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:46:03,405 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:46:03,405 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:46:03,413 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:46:03,639 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:46:06,446 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:10,972 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:15,497 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:18,644 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:46:18,645 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:46:18,645 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:46:18,653 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:46:18,880 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:46:20,042 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:24,586 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:29,114 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:33,657 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:33,842 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:46:33,888 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:46:33,889 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:46:33,889 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:46:33,897 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:46:34,125 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:46:38,197 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:42,721 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:47,228 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:49,135 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:46:49,135 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:46:49,135 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:46:49,143 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:46:49,369 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:46:51,752 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:46:56,272 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:00,811 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:04,374 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:47:04,374 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:47:04,374 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:47:04,382 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:47:04,609 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:47:05,324 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:05,511 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:47:09,863 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:14,392 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:18,918 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:19,617 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:47:19,618 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:47:19,618 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:47:19,626 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:47:19,850 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:47:23,435 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:27,958 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:32,474 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:34,856 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:47:34,856 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:47:34,857 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:47:34,864 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:47:35,092 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:47:36,996 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:37,235 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:47:41,514 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:46,036 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:50,098 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:47:50,099 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:47:50,099 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:47:50,106 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:47:50,332 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:47:50,549 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:55,061 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:47:59,562 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:04,098 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:05,341 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:48:05,342 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:48:05,342 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:48:05,349 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:48:05,578 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:48:08,618 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:08,967 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:48:13,140 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:17,663 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:20,586 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:48:20,587 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:48:20,587 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:48:20,594 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:48:20,825 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:48:22,183 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:26,718 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:31,257 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:35,769 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:35,831 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:48:35,831 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:48:35,831 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:48:35,839 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:48:36,076 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:48:40,293 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:40,487 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:48:44,813 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:49,329 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:51,083 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:48:51,083 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:48:51,083 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:48:51,093 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:48:51,326 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:48:53,860 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:48:58,386 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:02,918 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:06,333 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:49:06,333 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:49:06,334 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:49:06,343 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:49:06,579 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:49:07,455 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:11,981 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:12,169 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:49:16,497 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:21,020 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:21,588 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:49:21,589 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:49:21,589 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:49:21,596 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:49:21,825 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:49:25,526 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:30,065 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:34,589 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:36,834 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:49:36,835 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:49:36,835 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:49:36,842 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:49:37,069 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:49:39,099 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:43,617 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:43,817 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:49:48,133 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:52,075 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:49:52,075 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:49:52,076 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:49:52,086 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:49:52,318 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:49:52,672 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:49:57,193 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:01,707 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:06,235 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:07,326 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:50:07,326 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:50:07,326 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:50:07,334 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:50:07,789 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:50:10,770 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:15,289 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:15,471 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:50:19,806 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:22,795 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:50:22,795 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:50:22,795 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:50:22,803 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:50:23,031 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:50:24,304 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:28,829 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:33,352 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:37,870 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:38,040 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:50:38,041 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:50:38,041 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:50:38,050 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:50:38,283 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:50:42,400 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:46,918 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:47,129 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:50:51,450 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:50:53,289 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:50:53,289 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:50:53,289 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:50:53,297 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:50:53,530 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:50:55,997 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:00,533 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:05,063 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:08,539 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:51:08,541 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:51:08,542 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:51:08,550 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:51:08,784 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:51:09,575 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:14,102 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:18,628 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:18,816 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:51:23,164 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:23,792 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:51:23,793 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:51:23,793 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:51:23,802 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:51:24,034 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:51:27,679 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:32,201 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:36,741 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:39,044 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:51:39,045 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:51:39,045 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:51:39,054 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:51:39,290 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:51:41,250 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:45,763 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:50,288 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:50,670 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:51:54,300 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:51:54,301 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:51:54,301 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:51:54,308 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:51:54,556 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:51:54,793 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:51:59,298 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:03,797 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:08,305 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:09,564 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:52:09,566 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:52:09,566 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:52:09,574 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:52:09,801 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:52:12,802 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:17,275 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:21,733 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:21,913 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:52:24,813 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:52:24,814 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:52:24,814 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:52:24,822 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:52:25,054 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:52:26,256 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:30,775 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:35,299 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:39,835 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:40,068 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:52:40,069 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:52:40,070 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:52:40,085 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:52:40,320 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:52:44,368 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:48,898 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:53,425 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:52:53,609 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:52:55,329 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:52:55,330 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:52:55,330 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:52:55,340 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:52:55,572 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:52:57,954 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:02,486 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:07,012 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:10,579 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:53:10,580 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:53:10,580 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:53:10,588 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:53:10,816 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:53:11,535 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:16,066 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:20,598 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:25,119 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:25,312 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:53:25,825 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:53:25,826 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:53:25,826 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:53:25,833 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:53:26,060 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:53:29,637 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:34,168 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:38,691 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:41,068 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:53:41,068 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:53:41,068 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:53:41,075 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:53:41,300 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:53:43,221 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:47,741 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:52,265 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:56,310 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:53:56,311 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:53:56,311 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:53:56,319 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:53:56,551 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:53:56,782 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:53:56,973 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:54:01,284 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:05,783 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:10,281 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:11,561 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:54:11,561 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:54:11,561 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:54:11,569 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:54:11,799 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:54:14,795 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:19,322 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:23,845 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:26,808 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:54:26,809 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:54:26,809 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:54:26,816 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:54:27,048 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:54:28,370 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:28,550 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:54:32,903 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:37,450 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:41,982 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:42,056 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:54:42,056 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:54:42,057 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:54:42,065 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:54:42,303 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:54:46,495 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:51,028 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:55,545 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:54:57,314 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:54:57,315 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:54:57,315 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:54:57,326 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:54:57,556 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:55:00,061 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:00,327 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:55:04,594 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:09,121 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:12,567 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:55:12,567 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:55:12,567 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:55:12,576 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:55:12,811 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:55:13,651 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:18,169 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:22,684 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:27,209 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:27,820 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:55:27,820 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:55:27,820 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:55:27,828 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:55:28,066 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:55:31,738 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:31,933 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:55:36,269 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:40,779 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:43,072 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:55:43,073 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:55:43,073 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:55:43,080 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:55:43,304 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:55:45,294 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:49,818 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:54,325 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:55:58,316 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:55:58,316 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:55:58,316 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:55:58,324 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:55:58,551 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:55:58,838 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:03,356 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:03,537 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:56:07,904 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:12,422 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:13,561 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:56:13,562 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:56:13,562 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:56:13,570 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:56:13,792 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:56:16,955 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:21,461 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:25,976 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:28,802 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:56:28,803 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:56:28,803 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:56:28,813 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:56:29,051 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:56:30,507 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:35,034 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:35,209 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:56:39,557 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:44,057 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:56:44,058 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:56:44,059 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:56:44,066 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:56:44,292 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:56:44,296 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:48,607 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:53,158 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:57,713 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:56:59,303 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:56:59,303 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:56:59,303 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:56:59,313 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:56:59,540 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:57:02,265 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:57:06,793 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:57:06,977 DEBUG   Thread-11 :48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /files/martinnilsen99/atari-breakout/3jgjjcv5/file_stream HTTP/1.1" 200 None
+2020-11-15 15:57:11,320 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:57:14,550 DEBUG   HandlerThread:48015 [handler.py:handle_request():54] handle_request: status
+2020-11-15 15:57:14,552 DEBUG   SenderThread:48015 [sender.py:send():89] send: request
+2020-11-15 15:57:14,553 DEBUG   SenderThread:48015 [sender.py:send_request():98] send_request: status
+2020-11-15 15:57:14,561 DEBUG   SenderThread:48015 [connectionpool.py:_new_conn():937] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-11-15 15:57:14,791 DEBUG   SenderThread:48015 [connectionpool.py:_make_request():433] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-11-15 15:57:15,865 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats
+2020-11-15 15:57:20,404 DEBUG   SenderThread:48015 [sender.py:send():89] send: stats

@@ -1,0 +1,16 @@
+0it [00:00, ?it/s]Traceback (most recent call last):
+  File "agent.py", line 236, in <module>
+    argh.dispatch_command(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/argh/dispatching.py", line 306, in dispatch_command
+    dispatch(parser, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/argh/dispatching.py", line 174, in dispatch
+    for line in lines:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/argh/dispatching.py", line 277, in _execute_command
+    for line in result:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/argh/dispatching.py", line 260, in _call
+    result = function(*positional, **keywords)
+  File "agent.py", line 182, in main
+    observation, reward, done, info = env.step(action)
+  File "/Users/martinnilsen/Onedrive - NTNU/Fag/Dataingeniør 3. år/Høst 2020/TDAT3025 - Anvendt maskinlæring med prosjekt/Maskinlæringsprosjekt/code/utils.py", line 151, in step
+    observation, reward, done, info = None
+TypeError: cannot unpack non-iterable NoneType object

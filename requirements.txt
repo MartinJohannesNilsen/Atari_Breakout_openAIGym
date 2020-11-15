@@ -14,3 +14,4 @@ matplotlib==3.3.3
 
 # pip install gym[atari]
 gym==0.17.3
+atari_py==0.2.6
