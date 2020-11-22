@@ -8,7 +8,9 @@ En implementasjon av Deep Q-Network på retrospillet Atari Breakout.
 Vedlagt i kildekoden ligger det en fil `breakout_test.py` som gir deg muligheten til å spille spillet selv med tastaturet.
 Dette er fra et av mine egne forsøk:
 
-![381](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/381_increasedMaxLenFrom_368_30m_last_targ_model.gif)
+![24_meg](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/24_meg.gif)
+
+Jeg klarte kun oppnå en score på 24, men før du bedømmer meg bør du prøve det ut selv, det var ikke så lett som det ser ut som!
 
 ---
 ### For å kjøre koden
@@ -27,5 +29,7 @@ Utvidelser:
 
 ---
 ### Forhåndsvisning av oppnådde poengsummer per kjøring:
-381
+
+Refererer her til  laget i forbindelse med prosjektet.
+
 ![381](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/381_increasedMaxLenFrom_368_30m_last_targ_model.gif)
