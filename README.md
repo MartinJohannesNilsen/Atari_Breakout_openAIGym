@@ -1,7 +1,7 @@
 # DQN på Atari Breakout
 
 En implementasjon av Deep Q-Network på retrospillet Atari Breakout.  
-Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](http://www.google.no).
+Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](http://www.google.no).  
 Miljøet `BreakoutDeterministic-v4` fra OpenAI Gym ble tatt i bruk, implementert med bla. Python og PyTorch.
 
 ----
