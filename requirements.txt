@@ -1,10 +1,10 @@
-numpy==1.19.4
-torch==1.6.0
-opencv_python==4.4.0.44
-wandb==0.10.8
+numpy==1.18.5
+torch==1.7.0
+opencv_python==4.4.0.46
+wandb==0.10.10
 dataclasses==0.6
 argh==0.26.2
-tqdm==4.50.2
+tqdm==4.52.0
 moviepy==1.0.3
 imageio==2.9.0
 
@@ -12,6 +12,6 @@ imageio==2.9.0
 pygame==2.0.0
 matplotlib==3.3.3
 
-# pip install gym[atari]
 gym==0.17.3
 atari_py==0.2.6
+pyglet==1.5.10

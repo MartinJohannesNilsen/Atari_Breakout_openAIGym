@@ -12,8 +12,7 @@ from typing import Any
 from random import sample
 from tqdm import tqdm
 from models import ConvModel
-from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type
-from utils import NoFireInActionSpaceEnv
+from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type, optimizer_function
 
 
 @dataclass
@@ -87,14 +86,14 @@ def train_step(model, state_transitions, target, num_actions, gamma=discount_fac
 
     loss_fn = nn.SmoothL1Loss()  # Huber loss
     loss = loss_fn(torch.sum(q_vals * one_hot_actions, -1), rewards.squeeze() + action_mask[:, 0] * qvals_next * gamma)
-    # loss = (rewards + qvals_next - torch.sum(q_vals*one_hot_actions, -1).mean()) # -1 for direction # First implementation of lossfunction
+    # loss = (rewards + qvals_next - torch.sum(q_vals*one_hot_actions, -1).mean())  # -1 for direction # First implementation of MSE lossfunction
     loss.backward()
     model.opt.step()
 
     return loss
 
 
-def run_test_episode(model, env, max_steps=1000):
+def run_test_episode(model, env, max_steps=10000):
     """
     Run one episode of the game 
 
@@ -117,7 +116,7 @@ def run_test_episode(model, env, max_steps=1000):
 
     while not done and i < max_steps:
         action = model(torch.Tensor(obs).unsqueeze(0)).max(-1)[-1].item()
-        obs, r, done, info = env.step(action)
+        obs, r, done, _ = env.step(action)
         reward += r
         frames.append(env.frame)
         i += 1
@@ -134,9 +133,23 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
             os.environ["WANDB_MODE"] = "dryrun"
         if name == None:
             name = input("Name the run: ")
-        wandb.init(project="atari-breakout", name=name)
+        wandb.init(project="atari-breakout", name=name, config={
+            'memory_size': memory_size,
+            'min_rb_size': min_rb_size,
+            'sample_size': sample_size,
+            'lr': lr,
+            'eps_min': eps_min,
+            'eps_decay': eps_decay,
+            'discount_factor': discount_factor,
+            'env_steps_before_train': env_steps_before_train,
+            'epochs_before_tgt_model_update': epochs_before_tgt_model_update,
+            'epochs_before_test': epochs_before_test,
+            'optimizer_function': optimizer_function.__name__,
+            'exploration_method': exploration_method.__name__,
+            'env_type': env_type.__name__
+        })
 
-    "Create enviroments"
+    "Create enviroments and reset"
     env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     test_env = env_type(gym.make("BreakoutDeterministic-v4"), 84, 84, 4)
     last_observation = env.reset()
@@ -157,9 +170,6 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
     episode_rewards = []
     total_reward = 0
 
-    "For NoFireActionInEnv we have to count lives for resetting if the agent looses a life"
-    lives = 5
-
     tq = tqdm()
     try:
         while True:
@@ -179,7 +189,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
             action = exploration_method(model=m, env=env, last_observation=last_observation, eps=eps)
 
             "Perform step and insert observation to replaybuffer"
-            observation, reward, done, info = env.step(action)
+            observation, reward, done, _ = env.step(action)
             total_reward += reward
             rb.insert(GameInformation(last_observation, action, reward, observation, done))
             last_observation = observation
