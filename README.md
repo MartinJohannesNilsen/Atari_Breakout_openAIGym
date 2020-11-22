@@ -1,3 +1,31 @@
 ## DQN på OpenAI Gym `BreakoutDeterministic-v4`
 
-Dette er et prosjekt i faget TDAT3025 - Anvendt maskinlæring med prosjekt.
+En implementasjon av Deep Q-Network på retrospillet Atari Breakout.
+
+----
+### For å spille spillet selv
+
+Vedlagt i kildekoden ligger det en fil `breakout_test.py` som gir deg muligheten til å spille spillet selv med tastaturet.
+Dette er fra et av mine egne forsøk:
+
+![381](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/381_increasedMaxLenFrom_368_30m_last_targ_model.gif)
+
+---
+### For å kjøre koden
+
+Dette prosjektet tar i bruk pakken `argh`, som gjør det mulig å definere ulike parametere i terminalkommandoen for kjøring.
+```Python
+Grunnleggende:
+$ python agent.py
+
+Utvidelser:
+-t, kjør i testmode med en rendret versjon med utgangspunkt i modell, uten trening
+-l, kjør med lokal synkronisering mot wandb.ai
+-n, definer navnet på kjøringen, hvis ikke vil dette bli spurt om
+-c, sett en tidligere modell på formatet '.pth' som utgangspunkt 
+```
+
+---
+### Forhåndsvisning av oppnådde poengsummer per kjøring:
+381
+![381](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/381_increasedMaxLenFrom_368_30m_last_targ_model.gif)
