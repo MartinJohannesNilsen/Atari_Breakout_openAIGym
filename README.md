@@ -30,6 +30,6 @@ Utvidelser:
 ---
 ### Forhåndsvisning av oppnådde poengsummer per kjøring:
 
-Refererer her til  laget i forbindelse med prosjektet.
+Refererer her til [rapporten](https://martinnilsen.no/media/Maskinlæringsrapport_DQN_AtariBreakout.pdf) laget i forbindelse med prosjektet.
 
 ![381](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/381_increasedMaxLenFrom_368_30m_last_targ_model.gif)
