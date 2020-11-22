@@ -1,7 +1,7 @@
 # DQN på Atari Breakout
 
 En implementasjon av Deep Q-Network på retrospillet Atari Breakout.  
-Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](http://www.google.no).  
+Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](https://martinnilsen.no/media/Maskinlæringsrapport_DQN_AtariBreakout.pdf).  
 Miljøet `BreakoutDeterministic-v4` fra OpenAI Gym ble tatt i bruk, implementert med bla. Python og PyTorch.
 
 ----
@@ -29,7 +29,7 @@ Utvidelser:
 -c <"model.pth">, sett en tidligere modell i **Models** på formatet '.pth' som utgangspunkt
 ```
 
-En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer få en poengsum på 360. 
+En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer få en poengsum på 360.  
 Ettersom systemet er deterministisk skal du få det samme ved kjøring.
 
 ---
