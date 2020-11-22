@@ -1,6 +1,7 @@
 ## DQN på OpenAI Gym `BreakoutDeterministic-v4`
 
-En implementasjon av Deep Q-Network på retrospillet Atari Breakout.
+En implementasjon av Deep Q-Network på retrospillet Atari Breakout.  
+Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](http://www.google.no).
 
 ----
 ### Spill spillet selv
