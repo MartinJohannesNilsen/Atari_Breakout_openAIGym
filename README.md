@@ -1,14 +1,13 @@
 # DQN på Atari Breakout
 
 En implementasjon av Deep Q-Network på retrospillet Atari Breakout.  
-Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](http://www.google.no).  
+Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](https://martinnilsen.no/media/Maskinlæringsrapport_DQN_AtariBreakout.pdf).  
 Miljøet `BreakoutDeterministic-v4` fra OpenAI Gym ble tatt i bruk, implementert med bla. Python og PyTorch.
 
 ----
 ## Spill spillet selv
 
-Vedlagt i kildekoden ligger det en fil `breakout_test.py` som gir deg muligheten til å spille spillet selv med tastaturet.  
-Dette er fra et av mine egne forsøk:
+Vedlagt i kildekoden ligger det en fil `breakout_test.py` som gir deg muligheten til å spille spillet selv med tastaturet. Dette er fra et av mine egne forsøk:
 
 ![24_meg](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/24_meg.gif)
 
@@ -23,11 +22,13 @@ Grunnleggende:
 $ python agent.py
 
 Utvidelser:
--t, kjør i testmode med en rendret versjon med utgangspunkt i modell, uten trening
+-t, kjør i testmodus der du ser en rendret versjon med utgangspunkt i modell, uten trening
 -l, kjør med lokal synkronisering mot wandb.ai
--n, definer navnet på kjøringen, hvis ikke vil dette bli spurt om
--c, sett en tidligere modell på formatet '.pth' som utgangspunkt 
+-n <"Navn">, definer navnet på kjøringen (vil bli spurt om dersom ikke testmodus)
+-c <"model.pth">, sett en tidligere modell i **Models** på formatet '.pth' som utgangspunkt
 ```
+
+En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer få en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
 
 ---
 ## De tre beste kjøringene
