@@ -22,7 +22,7 @@ $ python agent.py
 Utvidelser:
 -t               : Kjør i testmodus med en rendret versjon av miljøet. Trener ikke, og bør tas utgangspunkt i en trent modell.
 -l               : Kjør med lokal synkronisering mot wandb.ai
--n <"Navn">      : Definer navnet på kjøringen (vil bli spurt om dersom ikke testmodus)
+-n <"navn">      : Definer navnet på kjøringen (vil bli spurt om dersom ikke testmodus)
 -c <"model.pth"> : Sett en tidligere modell i /Models som utgangspunkt
 ```
 
