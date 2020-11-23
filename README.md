@@ -26,7 +26,7 @@ Utvidelser:
 -c <"model.pth"> : Sett en tidligere modell i /Models som utgangspunkt
 ```
 
-En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer få en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
+En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer oppnå en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
 
 ---
 ## De tre beste kjøringene
@@ -47,7 +47,7 @@ Boltzmann med RMSProp oppnådde en score på 379 etter 36m steg.
 
 ![368_30m_boltzreduced.gif](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/368_30m_boltzreduced.gif "Boltzmann med justert handlingsrom. 368 etter 30m steg.")
 
-Boltzmann med redusert handlingsrom. Score på 368 etter 30m steg, og mister ikke siste livet. Ble avsluttet etter den nådde maxgrensa for antall handlinger i en epoke, en begrensning satt i det originale miljøet for å unngå at den kjører uendelig dersom agenten bla. ikke starter spillet selv.
+Boltzmann med redusert handlingsrom. Score på 368 etter 30m steg, og mister ikke siste livet. Ble avsluttet etter den nådde maksgrensa for antall handlinger i en episode; en begrensning satt i det originale miljøet for å unngå at den kjører uendelig dersom agenten bla. ikke starter spillet selv.
 
 ## En gang det ikke gikk like bra
 
@@ -59,5 +59,5 @@ Et eksempel på nevnt scenario over. Agenten starter ikke spillet, men vibrerer 
 
 ![36_15m_v0.gif](https://github.com/Martinnilsen99/Atari_Breakout_openAIGym/blob/master/ReadMe/Gifs/36_15m_v0.gif "Første fungerende kjøring i Breakout-v0. Score på 36 etter 15m steg.")
 
-Første fungerende kjøring i miljløet *Breakout-v0*. Oppnådd score på 36 etter 15m steg. Dette var siste kjøring der dette miljøet ble tatt i bruk, videre ble miljøet *BreakoutDeterministic-v4* brukt. Begrunnelse for dette valget står beskrevet i rapporten.
+Første fungerende kjøring i miljløet *Breakout-v0*. Oppnådd score på 36 etter 15m steg. Som beskrevet i rapporten ble miljøet *BreakoutDeterministic-v4* brukt i videre kjøringer. Dette fordi en ønsket ha mer kontroll over tilfeldighetene, mer om dette i rapporten.
 
