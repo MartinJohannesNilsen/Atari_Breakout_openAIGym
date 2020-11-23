@@ -30,10 +30,10 @@ class ReplayBuffer:
     Buffer for achieving experience replay, storing earlier experiences.
 
     Input:\n
-    - Buffer size, max number of elements in buffer (default 1_000_000)
+    - Buffer size, max number of elements in buffer
     """
 
-    def __init__(self, buffer_size=1_000_000):
+    def __init__(self, buffer_size=memory_size):
         self.buffer_size = buffer_size
         self.buffer = [None] * buffer_size
         self.i = 0
@@ -186,7 +186,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
             elif eps < eps_min:
                 eps = eps_min
 
-            "Exploration vs exploitation, Boltzmann with eps_decay vs Epsilon Greedy (defined in hyperparams.py)"
+            "Exploration vs exploitation, Boltzmann with eps_decay vs. Epsilon Greedy (defined in constants.py)"
             action = exploration_method(model=m, env=env, last_observation=last_observation, eps=eps)
 
             "Perform step and insert observation to replaybuffer"

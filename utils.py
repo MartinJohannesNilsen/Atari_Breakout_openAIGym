@@ -1,7 +1,8 @@
 """
-This class includes the following utilities:
+This file includes the following utilities:
 - New enviroment with framestacking and rezising, transitioned to grey-scale
-- New enviroment which inherit the framsetack and resize, but also removes the fire action from action_space
+- New enviroment which inherit the framestack and resize, but also removes the fire action from action_space
+- New action_space class without the fire action
 - Test framestack and print out frames as enviroment sees them
 - Exploration vs exploitation methods, both epsilon greedy and boltzmann with eps_decay
 """
