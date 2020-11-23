@@ -12,7 +12,7 @@ from typing import Any
 from random import sample
 from tqdm import tqdm
 from models import ConvModel
-from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, eps_min, exploration_method, env_type, optimizer_function
+from constants import memory_size, min_rb_size, sample_size, lr, eps_decay, discount_factor, env_steps_before_train, epochs_before_tgt_model_update, epochs_before_test, episode_max_steps, eps_min, exploration_method, env_type, optimizer_function
 
 
 @dataclass
@@ -93,7 +93,7 @@ def train_step(model, state_transitions, target, num_actions, gamma=discount_fac
     return loss
 
 
-def run_test_episode(model, env, max_steps=10000):
+def run_test_episode(model, env, max_steps=episode_max_steps):
     """
     Run one episode of the game 
 
@@ -144,6 +144,7 @@ def main(name=None, chkpt=None, test_run=False, local_run=False):
             'env_steps_before_train': env_steps_before_train,
             'epochs_before_tgt_model_update': epochs_before_tgt_model_update,
             'epochs_before_test': epochs_before_test,
+            'episode_max_steps': episode_max_steps,
             'optimizer_function': optimizer_function.__name__,
             'exploration_method': exploration_method.__name__,
             'env_type': env_type.__name__

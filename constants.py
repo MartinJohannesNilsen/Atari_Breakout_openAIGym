@@ -15,6 +15,7 @@ discount_factor = 0.99
 env_steps_before_train = 16
 epochs_before_tgt_model_update = 5000
 epochs_before_test = 1500
+episode_max_steps = 10_000
 
 
 "Other variables to tune"
