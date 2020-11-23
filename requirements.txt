@@ -7,11 +7,8 @@ argh==0.26.2
 tqdm==4.52.0
 moviepy==1.0.3
 imageio==2.9.0
-
-# For breakout_test.py
 pygame==2.0.0
 matplotlib==3.3.3
-
 gym==0.17.3
 atari_py==0.2.6
 pyglet==1.5.10
