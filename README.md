@@ -20,10 +20,10 @@ Grunnleggende:
 $ python agent.py
 
 Utvidelser:
--t, kjør i testmodus der du ser en rendret versjon med utgangspunkt i modell, uten trening
--l, kjør med lokal synkronisering mot wandb.ai
--n <"Navn">, definer navnet på kjøringen (vil bli spurt om dersom ikke testmodus)
--c <"model.pth">, sett en tidligere modell i /Models på formatet '.pth' som utgangspunkt
+-t               : Kjør i testmodus med en rendret versjon av miljøet. Trener ikke, og bør tas utgangspunkt i en trent modell.
+-l               : Kjør med lokal synkronisering mot wandb.ai
+-n <"Navn">      : Definer navnet på kjøringen (vil bli spurt om dersom ikke testmodus)
+-c <"model.pth"> : Sett en tidligere modell i /Models som utgangspunkt
 ```
 
 En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer få en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
