@@ -26,7 +26,7 @@ Utvidelser:
 -c <"model.pth"> : Sett en tidligere modell i /Models som utgangspunkt
 ```
 
-En kan for eksempel kjøre `$ python agent.py -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer oppnå en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
+En kan for eksempel kjøre `$ python agent.py -t -c "rmsprop_før_379.pth"` for å kjøre en modell som klarer oppnå en poengsum på 360. Ettersom systemet er deterministisk skal du få det samme ved kjøring.
 
 ---
 ## De tre beste kjøringene
