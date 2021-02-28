@@ -1,6 +1,6 @@
 # DQN på Atari Breakout
 
-En implementasjon av Deep Q-Network på retrospillet Atari Breakout. Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](https://martinnilsen.no/media/Maskinlæringsrapport_DQN_AtariBreakout.pdf). For å teste agenten ble miljøet `BreakoutDeterministic-v4` fra OpenAI Gym tatt utgangspunkt i, og også senere modifisert. Koden er skrevet i Python, med pakker som bla. PyTorch og OpenCV.
+En implementasjon av Deep Q-Network på retrospillet Atari Breakout. Det ble skrevet en rapport i forbindelse med prosjektet, som er tilgjengelig [her](https://firebasestorage.googleapis.com/v0/b/portfoliobymartinnilsen.appspot.com/o/Files%2FMaskinlæringsrapport_DQN_AtariBreakout.pdf?alt=media&token=114e9a0e-16bd-4710-b295-1c81b5edd809). For å teste agenten ble miljøet `BreakoutDeterministic-v4` fra OpenAI Gym tatt utgangspunkt i, og også senere modifisert. Koden er skrevet i Python, med pakker som bla. PyTorch og OpenCV.
 
 ----
 ## Spill spillet selv
